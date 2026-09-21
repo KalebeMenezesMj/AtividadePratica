@@ -1,0 +1,98 @@
+// Dados do catálogo de animes (array de objetos)
+// A atividade não usa banco de dados: tudo fica salvo neste array em tempo de execução.
+// Cada objeto guarda as propriedades de um anime, inclusive a imagem (require carrega o arquivo de assets)
+
+export let animes = [
+  {
+    id: '1',
+    nome: 'Mob Psycho 100',
+    categoria: 'Comédia',
+    episodios: '12',
+    ano: '2016',
+    estudio: 'Bones',
+    descricao: 'Um garoto com poderes psíquicos imensos tenta levar uma vida comum.',
+    sinopse: 'Shigeo Kageyama, apelidado de Mob, é um adolescente com poderes psíquicos devastadores. Para manter as emoções sob controle, ele trabalha como assistente de Reigen, um falso espírita, enquanto enfrenta espíritos e organizações misteriosas.',
+    imagem: require('../assets/imagens/an1.jpg'),
+  },
+  {
+    id: '2',
+    nome: 'Dan Da Dan',
+    categoria: 'Sobrenatural',
+    episodios: '12',
+    ano: '2024',
+    estudio: 'Science SARU',
+    descricao: 'Uma garota que acredita em fantasmas e um garoto obcecado por OVNIs unem forças.',
+    sinopse: 'Momo acredita em fantasmas e Okarun acredita em alienígenas. Quando os dois resolvem provar quem está certo, acabam envolvidos com espíritos, demônios e poderes psíquicos em uma aventura sobrenatural.',
+    imagem: require('../assets/imagens/an2.jpg'),
+  },
+  {
+    id: '3',
+    nome: 'Demon Slayer',
+    categoria: 'Ação',
+    episodios: '26',
+    ano: '2019',
+    estudio: 'ufotable',
+    descricao: 'Tanjiro vira caçador de demônios para curar a irmã e vingar a família.',
+    sinopse: 'Após ter a família massacrada e a irmã transformada em demônio, Tanjiro Kamado se torna um caçador de demônios para reverter a maldição de Nezuko e derrotar o responsável pelo ataque.',
+    imagem: require('../assets/imagens/an3.jpg'),
+  },
+  {
+    id: '4',
+    nome: 'Hunter x Hunter',
+    categoria: 'Aventura',
+    episodios: '148',
+    ano: '2011',
+    estudio: 'Madhouse',
+    descricao: 'Gon parte em jornada perigosa para reencontrar o pai e se torna um Hunter.',
+    sinopse: 'Gon Freecss descobre que o pai abandonado é um Hunter lendário e decide seguir o mesmo caminho. Na prova de seleção ele faz amigos como Killua e Kurapika e enfrenta perigos que testam seus limites.',
+    imagem: require('../assets/imagens/an4.jpg'),
+  },
+  {
+    id: '5',
+    nome: 'Gachiakuta',
+    categoria: 'Ação',
+    episodios: '24',
+    ano: '2025',
+    estudio: 'Bones Film',
+    descricao: 'Rudo é jogado no Abismo e jura vingança contra a elite que o descartou.',
+    sinopse: 'Rudo vive catando lixo no bairro pobre até ser traído e jogado no Abismo, para onde vai tudo que a cidade descarta. Lá ele descobre um poder ligado ao lixo e jura vingança contra a elite.',
+    imagem: require('../assets/imagens/an5.jpg'),
+  },
+  {
+    id: '6',
+    nome: 'Naruto',
+    categoria: 'Ação',
+    episodios: '220',
+    ano: '2002',
+    estudio: 'Pierrot',
+    descricao: 'Naruto Uzumaki sonha em se tornar o Hokage da sua vila.',
+    sinopse: 'Naruto é um jovem ninja carregado pela Raposa de Nove Caudas que foi selada em seu corpo. Ignorado pela vila, ele treina duro junto do time 7 para realizar seu sonho: virar Hokage e ser reconhecido por todos.',
+    imagem: require('../assets/imagens/an6.jpg'),
+  },
+  {
+    id: '7',
+    nome: 'One Piece',
+    categoria: 'Aventura',
+    episodios: '1000+',
+    ano: '1999',
+    estudio: 'Toei Animation',
+    descricao: 'Luffy reúne um tripulação e parte em busca do tesouro One Piece.',
+    sinopse: 'Monkey D. Luffy quer ser o Rei dos Piratas e para isso reúne a tripulação dos Chapéus de Palha. Juntos eles navegam pela Grand Line enfrentando marines e piratas em busca do lendário tesouro One Piece.',
+    imagem: require('../assets/imagens/an7.jpg'),
+  },
+  {
+    id: '8',
+    nome: 'Saiki Kusuo no Psi-nan',
+    categoria: 'Comédia',
+    episodios: '120',
+    ano: '2016',
+    estudio: 'J.C.Staff',
+    descricao: 'Um psíquico todo-poderoso só quer uma vida pacífica, mas os amigos atrapalham.',
+    sinopse: 'Kusuo Saiki nasceu com todo tipo de poder psíquico, desde telepatia até teletransporte. Tudo que ele quer é uma vida comum, mas os colegas excêntricos da escola transformam seus dias silenciosos em puro caos.',
+    imagem: require('../assets/imagens/an8.jpg'),
+  },
+];
+
+// Favoritos do usuário: começa vazio e recebe os animes marcados na tela de detalhes.
+// Também fica em tempo de execução (sem banco de dados)
+export let favoritos = [];

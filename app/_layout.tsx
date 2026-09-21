@@ -1,27 +1,18 @@
 import { Stack } from "expo-router";
 
+// Navegação principal do app em pilha (Stack): as abas ficam no primeiro nível
+// e a tela de detalhes do anime abre empilhada por cima delas
 export default function RootLayout(){
     return(
-        <Stack screenOptions={{headerTintColor:'#720a0a', headerStyle: {backgroundColor: 'yellow'}, }}>
-           
-            <Stack.Screen name="index" 
-                        options={{headerShown:false }} 
-            />
-            <Stack.Screen name="login"  
-                        options={{title:'Área Restrita'}}
-            />
-            <Stack.Screen name="cadastro"  
-                        options= {{title:'Criar conta'}}
-            />
-            <Stack.Screen name="(tabs)"  
+        <Stack screenOptions={{headerTintColor:'#F47521', headerStyle: {backgroundColor: '#16161D'}, }}>
+
+            <Stack.Screen name="(tabs)"
                         options= {{headerShown:false}}
             />
-            <Stack.Screen name="drawer"  
-                        options= {{headerShown:false}}
+            {/* rota dinâmica: /anime/1, /anime/2... o id chega como parâmetro */}
+            <Stack.Screen name="anime/[id]"
+                        options= {{title:'Detalhes do anime'}}
             />
         </Stack>
     )
 }
-
-
-
