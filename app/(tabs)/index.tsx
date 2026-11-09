@@ -11,25 +11,18 @@ import {
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 
-// importa o array de objetos com os animes (nossa "base" em tempo de execução)
 import { animes } from '../../data/animes';
 
-// importa o componente reutilizável do card de anime
 import AnimeCard from '../../components/animeCard';
 
-// Tela inicial: lista os animes do catálogo com FlatList, com cabeçalho de imagem
-// igual à tela de receitas do exemplo, além de busca por nome e remoção de itens
 export default function Animes() {
 
-    // ids dos animes removidos (o array original continua intacto, só a exibição filtra)
     const [removidos, setRemovidos] = useState([])
 
-    // campo de busca controlado pelo useState
     const [busca, setBusca] = useState("")
 
     const router = useRouter()
 
-    // monta a lista exibida: percorre o array de animes e ignora os ids removidos
     let listaExibida = []
     for (let i = 0; i < animes.length; i++) {
         let removido = false
@@ -44,9 +37,8 @@ export default function Animes() {
         }
     }
 
-    // busca por nome comparando em minúsculas, como visto no conteúdo de arrays de objetos
     function buscarAnime(){
-        if (!busca) return // evita buscar com o campo vazio
+        if (!busca) return
 
         let resultadoBusca = null
         for (let i = 0; i < animes.length; i++) {
@@ -63,9 +55,8 @@ export default function Animes() {
         }
     }
 
-    // remove o anime da exibição guardando o id no state (slice cria cópia, push adiciona)
     function removerAnime(id){
-        let novoArray = removidos.slice() // cópia do array para manter a imutabilidade do state
+        let novoArray = removidos.slice()
         novoArray.push(id)
         setRemovidos(novoArray)
     }
@@ -73,7 +64,7 @@ export default function Animes() {
     return (
         <View style={styles.container}>
 
-            {/* Cabeçalho com imagem de fundo e camada escura, como na tela de receitas do exemplo */}
+            {}
             <ImageBackground
                 source={require('../../assets/imagens/an7.jpg')}
                 resizeMode="cover"
@@ -89,7 +80,7 @@ export default function Animes() {
                 </View>
             </ImageBackground>
 
-            {/* linha com o campo de busca e o botão */}
+            {}
             <View style={styles.linhaBusca}>
                 <TextInput
                     placeholder="Nome do anime"
@@ -105,7 +96,7 @@ export default function Animes() {
                 </TouchableOpacity>
             </View>
 
-            {/* lista de animes usando FlatList */}
+            {}
             <FlatList
                 data={listaExibida}
                 keyExtractor={(item) => item.id}
@@ -134,7 +125,6 @@ const styles = StyleSheet.create({
         height: 150,
     },
 
-    // Camada transparente sobre a imagem, escurecendo para o texto aparecer bem
     cabecalhoFundo: {
         flex: 1,
         alignSelf: 'stretch',

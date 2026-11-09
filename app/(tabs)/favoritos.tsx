@@ -7,19 +7,15 @@ import {
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 
-// importa o array de favoritos (preenchido na tela de detalhes) e o card reutilizável
 import { favoritos } from '../../data/animes';
 import AnimeCard from '../../components/animeCard';
 
-// Aba de favoritos: lista os animes marcados com o coração na tela de detalhes
 export default function Favoritos() {
 
-    // ids removidos da exibição (o array original continua intacto)
     const [removidos, setRemovidos] = useState([])
 
     const router = useRouter()
 
-    // monta a lista exibida: percorre os favoritos e ignora os ids removidos
     let listaExibida = []
     for (let i = 0; i < favoritos.length; i++) {
         let removido = false
@@ -34,14 +30,12 @@ export default function Favoritos() {
         }
     }
 
-    // tira o anime da lista de favoritos (slice cria cópia, push adiciona o id)
     function removerFavorito(id){
-        let novoArray = removidos.slice() // cópia para manter a imutabilidade do state
+        let novoArray = removidos.slice() 
         novoArray.push(id)
         setRemovidos(novoArray)
     }
 
-    // enquanto não houver favoritos, mostra o aviso em vez da lista vazia
     if (listaExibida.length === 0) {
         return (
             <View style={styles.container}>
@@ -60,7 +54,7 @@ export default function Favoritos() {
                 Favoritos ({listaExibida.length})
             </Text>
 
-            {/* lista de favoritos usando FlatList com o mesmo card do catálogo */}
+            {}
             <FlatList
                 data={listaExibida}
                 keyExtractor={(item) => item.id}
