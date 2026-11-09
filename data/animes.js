@@ -1,6 +1,3 @@
-// Dados do catálogo de animes (array de objetos)
-// A atividade não usa banco de dados: tudo fica salvo neste array em tempo de execução.
-// Cada objeto guarda as propriedades de um anime, inclusive a imagem (require carrega o arquivo de assets)
 
 export let animes = [
   {
@@ -93,6 +90,4 @@ export let animes = [
   },
 ];
 
-// Favoritos do usuário: começa vazio e recebe os animes marcados na tela de detalhes.
-// Também fica em tempo de execução (sem banco de dados)
 export let favoritos = [];
