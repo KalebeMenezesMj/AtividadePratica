@@ -6,12 +6,14 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-
+// Componente reutilizável que representa um anime da lista
+// Recebe por props o objeto do anime e as funções de clique (ver detalhes e remover),
+// quem usa o componente decide o que acontece em cada botão
 export default function AnimeCard(props) {
     return (
         <View style={styles.card}>
 
-            {}
+            {/* Capa do anime em largura total, igual ao card de receita do exemplo */}
             <Image
                 source={props.anime.imagem}
                 style={styles.imagem}
@@ -27,12 +29,12 @@ export default function AnimeCard(props) {
                     {props.anime.categoria} - {props.anime.episodios} episódios
                 </Text>
 
-                {}
+                {/* descricao curta, limitada em 2 linhas para o card não ficar gigante */}
                 <Text style={styles.descricao} numberOfLines={2}>
                     {props.anime.descricao}
                 </Text>
 
-                {}
+                {/* Botão que abre a tela de detalhes passando o id pela rota */}
                 <TouchableOpacity
                     style={styles.btn}
                     onPress={props.onVerDetalhes}
@@ -42,7 +44,7 @@ export default function AnimeCard(props) {
                     </Text>
                 </TouchableOpacity>
 
-                {}
+                {/* Botão que remove o anime da lista */}
                 <TouchableOpacity
                     style={styles.btnRemover}
                     onPress={props.onRemover}

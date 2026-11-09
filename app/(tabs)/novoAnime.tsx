@@ -11,30 +11,39 @@ import {
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 
+// pacote do Expo que abre a galeria para o usuário escolher uma imagem
 import * as ImagePicker from 'expo-image-picker';
 
+// importa o array de animes para adicionar o novo item direto nele (sem banco de dados)
 import { animes } from '../../data/animes';
 
+// Tela de cadastro: formulário controlado com useState que adiciona um novo anime no array
 export default function NovoAnime() {
 
+    // estados do formulário: cada campo tem o próprio estado
     const [nome, setNome] = useState("")
     const [categoria, setCategoria] = useState("")
     const [episodios, setEpisodios] = useState("")
     const [descricao, setDescricao] = useState("")
 
+    // imagem anexada pelo usuário: guarda um objeto { uri } que o Image aceita como fonte
     const [imagem, setImagem] = useState(null)
 
     const router = useRouter()
 
+    // animes cadastrados na hora sem imagem usam a logo como capa padrão
     let imagemPadrao = require('../../assets/imagens/logo.png')
 
+    // abre a galeria do celular para o usuário anexar a capa do anime
     async function escolherImagem(){
+        // pede permissão de acesso às fotos antes de abrir a galeria
         let permissao = await ImagePicker.requestMediaLibraryPermissionsAsync()
         if (!permissao.granted) {
             Alert.alert('Precisamos da permissão para acessar suas fotos')
             return
         }
 
+        // abre a galeria só com imagens e deixa cortar a foto no formato de capa
         let resultado = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ['images'],
             allowsEditing: true,
@@ -42,17 +51,21 @@ export default function NovoAnime() {
             quality: 1,
         })
 
+        // se o usuário não cancelou, guarda a uri da imagem escolhida
         if (!resultado.canceled) {
             setImagem({ uri: resultado.assets[0].uri })
         }
     }
 
+    // valida os campos, verifica duplicidade e adiciona o anime no array
     function adicionarAnime(){
+        // nenhum campo pode ficar vazio
         if (!nome || !categoria || !episodios || !descricao) {
             Alert.alert('Preencha todos os campos')
             return
         }
 
+        // percorre o array para verificar se o anime já existe (comparando em minúsculas)
         let existe = false
         for (let i = 0; i < animes.length; i++) {
             if (animes[i].nome.toLowerCase() === nome.toLowerCase()) {
@@ -65,8 +78,10 @@ export default function NovoAnime() {
             return
         }
 
+        // usa a imagem anexada; se o usuário não anexou nenhuma, cai na logo padrão
         let imagemFinal = imagem || imagemPadrao
 
+        // gera o novo id e adiciona o objeto no array em tempo de execução
         let novoId = (animes.length + 1).toString() // convertido para string, igual aos outros ids
         animes.push({
             id: novoId,
@@ -80,6 +95,7 @@ export default function NovoAnime() {
             imagem: imagemFinal,
         })
 
+        // limpa o formulário (inclusive a imagem anexada) e volta para a lista
         setNome("")
         setCategoria("")
         setEpisodios("")
@@ -97,7 +113,7 @@ export default function NovoAnime() {
                     Novo anime
                 </Text>
 
-                {}
+                {/* preview da capa anexada, exibido enquanto o usuário não cadastra */}
                 {
                     imagem ?
                     <Image source={imagem} style={styles.preview} />
@@ -105,14 +121,14 @@ export default function NovoAnime() {
                     null
                 }
 
-                {}
+                {/* botão que abre a galeria para anexar a capa */}
                 <TouchableOpacity style={styles.btnImagem} onPress={escolherImagem}>
                     <Text style={styles.btnTexto}>
                         Anexar imagem da galeria
                     </Text>
                 </TouchableOpacity>
 
-                {}
+                {/* cada TextInput é controlado pelo estado correspondente */}
                 <TextInput
                     placeholder="Nome do anime"
                     placeholderTextColor="#A0A0AB"
@@ -144,7 +160,7 @@ export default function NovoAnime() {
                     onChangeText={setDescricao}
                 />
 
-                {}
+                {/* botão que dispara a função de adicionar */}
                 <TouchableOpacity style={styles.btn} onPress={adicionarAnime}>
                     <Text style={styles.btnTexto}>
                         Cadastrar anime

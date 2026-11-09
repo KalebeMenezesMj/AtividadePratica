@@ -1,4 +1,4 @@
-
+z
 export let animes = [
   {
     id: '1',
@@ -90,4 +90,6 @@ export let animes = [
   },
 ];
 
+// Favoritos do usuário: começa vazio e recebe os animes marcados na tela de detalhes.
+// Também fica em tempo de execução (sem banco de dados)
 export let favoritos = [];
